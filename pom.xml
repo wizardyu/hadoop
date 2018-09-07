@@ -1,0 +1,181 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>people.bbs</groupId>
+  <artifactId>hadoop</artifactId>
+  <version>1.0</version>
+  <packaging>war</packaging>
+
+  <name>hadoop</name>
+  <url>http://maven.apache.org</url>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <hbase.version>2.1.0</hbase.version>
+    <junit_version>4.4</junit_version>
+    <spring-data-hadoop.version>2.5.0.RELEASE</spring-data-hadoop.version>
+    <spring_version>4.2.6.RELEASE</spring_version>
+    <org.springframework.version>4.2.6.RELEASE</org.springframework.version>
+    <protobuf_version>3.6.0</protobuf_version>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>${junit_version}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+         <groupId>org.apache.hbase</groupId>
+         <artifactId>hbase-client</artifactId>
+         <version>${hbase.version}</version>
+     </dependency>
+
+      <dependency>
+          <groupId>org.springframework.data</groupId>
+          <artifactId>spring-data-hadoop</artifactId>
+          <version>${spring-data-hadoop.version}</version>
+      </dependency>
+      
+      <!-- spring start --> 
+    <dependency>  
+        <groupId>org.springframework</groupId>  
+        <artifactId>spring-aop</artifactId>  
+        <version>${org.springframework.version}</version>  
+    </dependency>  
+    <dependency>  
+        <groupId>org.springframework</groupId>  
+        <artifactId>spring-aspects</artifactId>  
+        <version>${org.springframework.version}</version>  
+    </dependency>  
+    <dependency>  
+        <groupId>org.springframework</groupId>  
+        <artifactId>spring-beans</artifactId>  
+        <version>${org.springframework.version}</version>  
+    </dependency>  
+    <dependency>  
+        <groupId>org.springframework</groupId>  
+        <artifactId>spring-context</artifactId>  
+        <version>${org.springframework.version}</version>  
+    </dependency>  
+    <dependency>  
+        <groupId>org.springframework</groupId>  
+        <artifactId>spring-context-support</artifactId>  
+        <version>${org.springframework.version}</version>  
+    </dependency>  
+    <dependency>  
+        <groupId>org.springframework</groupId>  
+        <artifactId>spring-core</artifactId>  
+        <version>${org.springframework.version}</version>  
+    </dependency>  
+    <dependency>  
+        <groupId>org.springframework</groupId>  
+        <artifactId>spring-expression</artifactId>  
+        <version>${org.springframework.version}</version>  
+    </dependency>  
+    <dependency>  
+        <groupId>org.springframework</groupId>  
+        <artifactId>spring-instrument</artifactId>  
+        <version>${org.springframework.version}</version>  
+    </dependency>  
+    <dependency>  
+        <groupId>org.springframework</groupId>  
+        <artifactId>spring-instrument-tomcat</artifactId>  
+        <version>${org.springframework.version}</version>  
+    </dependency>  
+    <dependency>  
+        <groupId>org.springframework</groupId>  
+        <artifactId>spring-jdbc</artifactId>  
+        <version>${org.springframework.version}</version>  
+    </dependency>  
+    <dependency>  
+        <groupId>org.springframework</groupId>  
+        <artifactId>spring-jms</artifactId>  
+        <version>${org.springframework.version}</version>  
+    </dependency>  
+    <dependency>  
+        <groupId>org.springframework</groupId>  
+        <artifactId>spring-messaging</artifactId>  
+        <version>${org.springframework.version}</version>  
+    </dependency>  
+    <dependency>  
+        <groupId>org.springframework</groupId>  
+        <artifactId>spring-orm</artifactId>  
+        <version>${org.springframework.version}</version>  
+    </dependency>  
+    <dependency>  
+        <groupId>org.springframework</groupId>  
+        <artifactId>spring-oxm</artifactId>  
+        <version>${org.springframework.version}</version>  
+    </dependency>  
+    <dependency>  
+        <groupId>org.springframework</groupId>  
+        <artifactId>spring-test</artifactId>  
+        <version>${org.springframework.version}</version>  
+    </dependency>  
+    <dependency>  
+        <groupId>org.springframework</groupId>  
+        <artifactId>spring-tx</artifactId>  
+        <version>${org.springframework.version}</version>  
+    </dependency>  
+    <dependency>  
+        <groupId>org.springframework</groupId>  
+        <artifactId>spring-web</artifactId>  
+        <version>${org.springframework.version}</version>  
+    </dependency>  
+    <dependency>  
+        <groupId>org.springframework</groupId>  
+        <artifactId>spring-webmvc</artifactId>  
+        <version>${org.springframework.version}</version>  
+    </dependency>  
+    <dependency>  
+        <groupId>org.springframework</groupId>  
+        <artifactId>spring-webmvc-portlet</artifactId>  
+        <version>${org.springframework.version}</version>  
+    </dependency>  
+    <dependency>  
+        <groupId>org.springframework</groupId>  
+        <artifactId>spring-websocket</artifactId>  
+        <version>${org.springframework.version}</version>  
+    </dependency>  
+    <!-- spring end -->  
+      
+      
+	<dependency>
+	    <groupId>com.google.protobuf</groupId>
+	    <artifactId>protobuf-java</artifactId>
+	    <version>${protobuf_version}</version>
+	</dependency>
+ </dependencies> 
+      
+      
+     <!-- 构建设置 -->
+<build>
+		<plugins>
+ 		<!--将maven的编译和运行环境配置成jdk1.5，m2Eclipse0.10.0插件默认的是1dk1.4。
+ 			eg：junit4使用了jdk1.5的annotations，则必须将maven-compiler-plugin配置成1.5 
+		 -->
+		<plugin>
+     		<artifactId>maven-compiler-plugin</artifactId>
+     		<configuration>
+         		<source>1.8</source>
+        		<target>1.8</target>
+     		</configuration>
+ 		</plugin>
+
+		<!-- maven默认支持junit3.8.4，要支持junit4需重新配置 ,添加surefire-junit4plugin-->
+		<plugin>
+			<groupId>org.apache.maven.surefire</groupId>
+ 			<artifactId>surefire-junit4</artifactId>
+ 			<version>2.4.3</version>
+ 			<configuration>
+ 				<skip>false</skip> 
+ 				<testFailureIgnore>true</testFailureIgnore>
+ 			</configuration>
+ 		</plugin>
+	</plugins>
+</build>
+  
+</project>
