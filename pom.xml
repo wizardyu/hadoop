@@ -21,6 +21,7 @@
   </properties>
 
   <dependencies>
+   
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
@@ -148,6 +149,7 @@
 	    <artifactId>protobuf-java</artifactId>
 	    <version>${protobuf_version}</version>
 	</dependency>
+	
  </dependencies> 
       
       
