@@ -1,15 +1,17 @@
 package people.bbs.hadoop.hbase.util;
 import java.util.List;
 
+import org.apache.hadoop.hbase.client.Put;
+
 /**
  * Created by babylon on 2016/12/4.
  */
 public class MyTaskRun implements Runnable {
 
     private String tablename;
-    private List<SocPut> puts;
+    private List<Put> puts;
 
-    public MyTaskRun(String tablename, List<SocPut> puts) {
+    public MyTaskRun(String tablename, List<Put> puts) {
         this.tablename = tablename;
         this.puts = puts;
     }

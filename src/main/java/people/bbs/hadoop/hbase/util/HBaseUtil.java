@@ -422,7 +422,7 @@ public class HBaseUtil {
 	 * @return long				返回执行时间
      * @throws IOException
      */
-	public static long put(String tablename, List<SocPut> puts) throws Exception {
+	public static long put(String tablename, List<Put> puts) throws Exception {
 		long currentTime = System.currentTimeMillis();
 		Connection conn = getConnection();
 		final BufferedMutator.ExceptionListener listener = new BufferedMutator.ExceptionListener() {
