@@ -8,7 +8,7 @@
   <packaging>war</packaging>
 
   <name>hadoop</name>
-  <url>http://maven.apache.org</url>
+  <url>https://github.com/wizardyu/hadoop</url>
 
   <dependencies>
    
@@ -24,12 +24,13 @@
          <version>${hbase.version}</version>
      </dependency>
 
+	<!-- 
       <dependency>
           <groupId>org.springframework.data</groupId>
           <artifactId>spring-data-hadoop</artifactId>
           <version>${spring-data-hadoop.version}</version>
       </dependency>
-      
+       -->
       <!-- spring start --> 
     <dependency>  
         <groupId>org.springframework</groupId>  
@@ -157,6 +158,7 @@
           <groupId>javax.servlet</groupId>
           <artifactId>javax.servlet-api</artifactId>
           <version>${servlet_version}</version>
+          <scope>provided</scope>
       </dependency>
 	
  </dependencies> 
@@ -165,7 +167,6 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <hbase.version>2.1.0</hbase.version>
     <junit_version>4.6</junit_version>
-    <spring-data-hadoop.version>2.5.0.RELEASE</spring-data-hadoop.version>
     <spring_version>4.2.6.RELEASE</spring_version>
     <org.springframework.version>4.2.6.RELEASE</org.springframework.version>
     <protobuf_version>3.6.0</protobuf_version>
@@ -177,15 +178,15 @@
       
      <!-- 构建设置 -->
 <build>
-		<plugins>
-		
+	<plugins>
+		<!-- 
         <plugin>
             <groupId>org.apache.tomcat.maven</groupId>
             <artifactId>tomcat7-maven-plugin</artifactId>
             <version>2.2</version>
                <configuration>
                   <path>/</path>
-                  <port>8080</port>
+                  <port>80</port>
                   <server>tomcat7</server>
                </configuration>
                 <executions>
@@ -197,7 +198,7 @@
                     </execution>
                 </executions>
         </plugin>
-		 
+	  -->
 		<plugin>
      		<artifactId>maven-compiler-plugin</artifactId>
      		<configuration>
@@ -205,8 +206,26 @@
         		<target>1.8</target>
      		</configuration>
  		</plugin>
-
 	</plugins>
+	
+    <resources>
+		    <!-- 编译之后包含xml -->
+	    <resource>
+		      <directory>src/main/java</directory>
+		      <includes>
+		        	<include>**/*.xml</include>
+		      </includes>
+		      <filtering>true</filtering>
+	    </resource>
+		    <!-- 编译之后包含xml和properties -->
+	    <resource>
+	      <directory>src/main/resources</directory>
+		      <includes>
+		        	<include>**/*</include>
+		      </includes>
+		      <filtering>true</filtering>
+    	</resource>
+  </resources>
 </build>
   
 </project>
