@@ -9,9 +9,14 @@
  
     <context:annotation-config/> 
     <context:component-scan base-package="people.bbs"/> 
-    <hdp:configuration resources="hbase-site.xml"/> 
-    <hdp:hbase-configuration configuration-ref="hadoopConfiguration"/> 
-    <bean id="hbaseTemplate" class="org.springframework.data.hadoop.hbase.HbaseTemplate"> 
-        <property name="configuration" ref="hbaseConfiguration"/> 
-    </bean> 
+    
+    <hdp:configuration resources="classpath:/hbase-site.xml"/> 
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix">
+            <value>/WEB-INF/views/</value>
+        </property>
+        <property name="suffix">
+            <value>.jsp</value>
+        </property>
+    </bean>
 </beans> 

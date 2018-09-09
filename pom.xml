@@ -10,16 +10,6 @@
   <name>hadoop</name>
   <url>http://maven.apache.org</url>
 
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <hbase.version>2.1.0</hbase.version>
-    <junit_version>4.4</junit_version>
-    <spring-data-hadoop.version>2.5.0.RELEASE</spring-data-hadoop.version>
-    <spring_version>4.2.6.RELEASE</spring_version>
-    <org.springframework.version>4.2.6.RELEASE</org.springframework.version>
-    <protobuf_version>3.6.0</protobuf_version>
-  </properties>
-
   <dependencies>
    
     <dependency>
@@ -150,15 +140,64 @@
 	    <version>${protobuf_version}</version>
 	</dependency>
 	
+	<dependency>  
+        <groupId>javax.servlet</groupId>  
+         <artifactId>jstl</artifactId>  
+         <version>${jstl_version}</version>  
+         <scope>runtime</scope>  
+     </dependency> 
+    <dependency>
+        <groupId>taglibs</groupId>
+        <artifactId>standard</artifactId>
+        <version>${taglibs_version}</version>
+    </dependency>
+    
+      
+      <dependency>
+          <groupId>javax.servlet</groupId>
+          <artifactId>javax.servlet-api</artifactId>
+          <version>${servlet_version}</version>
+      </dependency>
+	
  </dependencies> 
+ 
+   <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <hbase.version>2.1.0</hbase.version>
+    <junit_version>4.6</junit_version>
+    <spring-data-hadoop.version>2.5.0.RELEASE</spring-data-hadoop.version>
+    <spring_version>4.2.6.RELEASE</spring_version>
+    <org.springframework.version>4.2.6.RELEASE</org.springframework.version>
+    <protobuf_version>3.6.0</protobuf_version>
+    <jstl_version>1.2</jstl_version>
+    <taglibs_version>1.1.2</taglibs_version>
+    <servlet_version>3.1.0</servlet_version>
+  </properties>
       
       
      <!-- 构建设置 -->
 <build>
 		<plugins>
- 		<!--将maven的编译和运行环境配置成jdk1.5，m2Eclipse0.10.0插件默认的是1dk1.4。
- 			eg：junit4使用了jdk1.5的annotations，则必须将maven-compiler-plugin配置成1.5 
-		 -->
+		
+        <plugin>
+            <groupId>org.apache.tomcat.maven</groupId>
+            <artifactId>tomcat7-maven-plugin</artifactId>
+            <version>2.2</version>
+               <configuration>
+                  <path>/</path>
+                  <port>8080</port>
+                  <server>tomcat7</server>
+               </configuration>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                    </execution>
+                </executions>
+        </plugin>
+		 
 		<plugin>
      		<artifactId>maven-compiler-plugin</artifactId>
      		<configuration>
@@ -167,16 +206,6 @@
      		</configuration>
  		</plugin>
 
-		<!-- maven默认支持junit3.8.4，要支持junit4需重新配置 ,添加surefire-junit4plugin-->
-		<plugin>
-			<groupId>org.apache.maven.surefire</groupId>
- 			<artifactId>surefire-junit4</artifactId>
- 			<version>2.4.3</version>
- 			<configuration>
- 				<skip>false</skip> 
- 				<testFailureIgnore>true</testFailureIgnore>
- 			</configuration>
- 		</plugin>
 	</plugins>
 </build>
   

@@ -17,7 +17,7 @@ public interface HBaseService {
      * @param preBuildRegion  是否预分配Region   true 是  ， false 否  默认 16个region，rowkey生成的时候记得指定前缀
      * @return  返回执行时间 (单位: 毫秒)
      */
-//    public void createTable(String tableName, String[] columnFamilies, boolean preBuildRegion) throws Exception;
+    public void createTable(String tableName, String[] columnFamilies, boolean preBuildRegion) throws Exception;
 
     /**
      * 写入数据

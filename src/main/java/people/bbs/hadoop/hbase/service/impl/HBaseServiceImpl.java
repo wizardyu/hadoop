@@ -4,6 +4,7 @@ import org.apache.hadoop.hbase.client.Put;
 import org.apache.hadoop.hbase.client.Result;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
 
 import people.bbs.hadoop.hbase.service.AbstractHBaseService;
 import people.bbs.hadoop.hbase.util.HBaseUtil;
@@ -18,6 +19,7 @@ import java.util.concurrent.Future;
  * HBaseService  实现类
  * Created by babylon on 2016/12/5.
  */
+@Service
 public class HBaseServiceImpl extends AbstractHBaseService{
  
     private static final Logger logger = LoggerFactory.getLogger(HBaseServiceImpl.class);
