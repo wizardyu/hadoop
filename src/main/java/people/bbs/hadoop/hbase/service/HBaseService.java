@@ -40,4 +40,8 @@ public interface HBaseService {
     <T> Result[] getRows(String tablename, List<T> rows);
 
     Result getRow(String tablename, byte[] row);
+
+	List<Result> list(String tableNameStr) throws Exception;
+
+	void queryAll(String tableName);
 }

@@ -1,5 +1,10 @@
 package people.bbs.hadoop.hbase.service.impl;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Future;
+
 import org.apache.hadoop.hbase.client.Put;
 import org.apache.hadoop.hbase.client.Result;
 import org.slf4j.Logger;
@@ -9,11 +14,6 @@ import org.springframework.stereotype.Service;
 import people.bbs.hadoop.hbase.service.AbstractHBaseService;
 import people.bbs.hadoop.hbase.util.HBaseUtil;
 import people.bbs.hadoop.hbase.util.ThreadPoolUtil;
-
-import java.util.Arrays;
-import java.util.List;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.Future;
  
 /**
  * HBaseService  实现类
@@ -30,6 +30,16 @@ public class HBaseServiceImpl extends AbstractHBaseService{
     public void put(String tableName, Put put, boolean waiting) {
         batchPut(tableName, Arrays.asList(put), waiting);
      }
+    
+    @Override
+    public List<Result> list(String tableNameStr) throws Exception {
+    	return HBaseUtil.list(tableNameStr);
+	}
+    
+    @Override
+    public void queryAll(String tableName){
+    	HBaseUtil.queryAll(tableName);
+    }
  
      /**
      * 多线程同步提交
