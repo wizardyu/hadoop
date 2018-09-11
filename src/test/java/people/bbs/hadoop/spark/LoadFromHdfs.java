@@ -13,7 +13,7 @@ import org.apache.hadoop.fs.Path;
 public class LoadFromHdfs {
 
     public static void main(String[] argvs) {
-        String uri = "hdfs://localhost:9070/user/root/output2/";
+        String uri = "hdfs://master:9000/flume/events/2018-09/";
         Configuration conf = new Configuration();
         //出现无法识别hdsf的问题可以加上以下两句
         conf.set("fs.hdfs.impl", "org.apache.hadoop.hdfs.DistributedFileSystem");

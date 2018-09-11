@@ -1,6 +1,5 @@
 package people.bbs.hadoop.spark.hbase;
 
-import java.io.UnsupportedEncodingException;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.regex.Pattern;
@@ -36,12 +35,9 @@ public final class SparkChangeTextCharsetTest {
 	@SuppressWarnings("serial")
 	public static void main(String[] args) throws Exception {
 
-		if (args.length < 2) {
-			System.err.println("Usage: JavaWordCount <file>");
-			System.exit(1);
-		}
-		String inputSparkFile = args[0];
-		String outputSparkFile = args[1];
+		String inputSparkFile = "hdfs://master:9000/flume/events/2018-09/2018-09-10-15.1536563899970.log";
+		
+//		String outputSparkFile = args[1];
 
 		SparkConf sparkConf = new SparkConf().setAppName("SparkWordCount");
 		ctx = new JavaSparkContext(sparkConf);
@@ -81,13 +77,13 @@ public final class SparkChangeTextCharsetTest {
 				return i1 + i2;
 			}
 		});
-
-		counts.map(new Function<Tuple2<String, Integer>, String>() {
-			@Override
-			public String call(Tuple2<String, Integer> arg0) throws Exception {
-				return arg0._1.toUpperCase() + ": " + arg0._2;
-			}
-		}).saveAsTextFile(outputSparkFile);
+		System.out.println(counts.count());
+//		counts.map(new Function<Tuple2<String, Integer>, String>() {
+//			@Override
+//			public String call(Tuple2<String, Integer> arg0) throws Exception {
+//				return arg0._1.toUpperCase() + ": " + arg0._2;
+//			}
+//		}).saveAsTextFile(outputSparkFile);
 
 		ctx.stop();
 	}

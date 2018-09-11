@@ -30,16 +30,30 @@
 			<groupId>org.apache.hbase</groupId>
 			<artifactId>hbase-client</artifactId>
 			<version>${hbase.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>com.fasterxml.jackson.core</groupId>
+					<artifactId>*</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
-		 <dependency>
-            <groupId>org.apache.spark</groupId>
-            <artifactId>spark-core_2.10</artifactId>
-            <version>${spark.version}</version>
-        </dependency>
-        <dependency>
-    		<groupId>org.apache.spark</groupId>
-    		<artifactId>spark-sql_2.11</artifactId>
-    		<version>${spark.sql.version}</version>
+
+		<dependency>
+			<groupId>com.sparkjava</groupId>
+			<artifactId>spark-core</artifactId>
+			<version>2.3</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.spark</groupId>
+			<artifactId>spark-sql_2.11</artifactId>
+			<version>${spark.sql.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.scala-lang</groupId>
+			<artifactId>scala-xml</artifactId>
+			<version>2.11.0-M4</version>
 		</dependency>
 
 
@@ -172,12 +186,21 @@
 			<version>${servlet_version}</version>
 			<scope>provided</scope>
 		</dependency>
-		
+
 		<dependency>
-        	<groupId>net.alchim31.maven</groupId>
-　　			<artifactId>scala-maven-plugin</artifactId>
-			<version>3.2.0</version>
+			<groupId>org.apache.spark</groupId>
+			<artifactId>spark-assembly_2.10</artifactId>
+			<version>1.1.0</version>
+			<type>pom</type>
+			<scope>test</scope>
 		</dependency>
+
+		<dependency>
+			<groupId>org.apache.hbase</groupId>
+			<artifactId>hbase-spark</artifactId>
+			<version>2.0.0-alpha4</version>
+		</dependency>
+
 	</dependencies>
 
 	<properties>
@@ -216,28 +239,6 @@
 		</resources>
 
 		<plugins>
-			<plugin>
-                <groupId>net.alchim31.maven</groupId>
-                <artifactId>scala-maven-plugin</artifactId>
-                <version>3.2.2</version>
-                <executions>
-                    <execution>
-                        <id>scala-compile-first</id>
-                        <phase>process-resources</phase>
-                        <goals>
-                            <goal>add-source</goal>
-                            <goal>compile</goal>
-                        </goals>
-                    </execution>
-                    <execution>
-                        <id>scala-test-compile</id>
-                        <phase>process-test-resources</phase>
-                        <goals>
-                            <goal>testCompile</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-war-plugin</artifactId>
