@@ -9,11 +9,11 @@ import org.apache.hadoop.hbase.HBaseConfiguration;
 import org.apache.hadoop.hbase.KeyValue;
 import org.apache.hadoop.hbase.client.Get;
 import org.apache.hadoop.hbase.client.Result;
+import org.apache.hadoop.hbase.spark.JavaHBaseContext;
 import org.apache.hadoop.hbase.util.Bytes;
 import org.apache.spark.api.java.JavaRDD;
 import org.apache.spark.api.java.JavaSparkContext;
 import org.apache.spark.api.java.function.Function;
-import com.cloudera.spark.hbase.JavaHBaseContext;
 
 public class JavaHBaseBulkGetExample {
   public static void main(String args[]) {
@@ -42,7 +42,7 @@ public class JavaHBaseBulkGetExample {
     conf.addResource(new Path("/etc/hbase/conf/core-site.xml"));
     conf.addResource(new Path("/etc/hbase/conf/hbase-site.xml"));
 
-    JavaHBaseContext hbaseContext = new JavaHBaseContext(jsc, conf);
+    JavaHBaseContext hbaseContext = new JavaHBaseContextSuite(jsc, conf);
 
     hbaseContext.bulkGet(tableName, 2, rdd, new GetFunction(),
         new ResultFunction());
